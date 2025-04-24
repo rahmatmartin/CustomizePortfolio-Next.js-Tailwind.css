@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '/styles/Parallax.css';
+
+/* Animasi & Custom Utilities */
+html {
+  scroll-behavior: smooth;
+}

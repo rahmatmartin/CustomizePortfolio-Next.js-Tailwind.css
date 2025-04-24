@@ -1,0 +1,19 @@
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme */
+body.dark {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #2d3748;
+}

@@ -1,0 +1,67 @@
+
+body {
+  background-color: var(--color-neutral-900);
+  color: var(--color-light);
+  font-size: var(--size-font);
+  margin: 0;
+  padding: 0;
+}
+
+.cto-hero{
+ 
+  font-family: monospace; 
+  pointer-events: none;
+}
+
+.parallax__layers {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax__layer-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.parallax__layer-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: white;
+  font-size: 100px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  letter-spacing: 5px; 
+  font-family: 'PP Neue Corp Wide', sans-serif; 
+  pointer-events: none;
+}
+
+
+.parallax__header {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax__content {
+  height: 00vh; /* biar bisa scroll */
+  background-color: #111;
+}
+
+@font-face {
+  font-family: 'PP Neue Corp Wide';
+  src: url('https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717e399d30a606fed425914_PPNeueCorp-WideUltrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
