@@ -18,6 +18,7 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  box-shadow: 100 60px 10px rgba(0, 0, 0, 0.5);
 }
 
 .parallax__layer-img {
@@ -27,7 +28,6 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
   z-index: 1;
-  box-shadow: 0 60px 120px rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 
@@ -40,7 +40,7 @@ body {
   color: white;
   font-size: 100px;
   font-weight: 800;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  text-shadow: 10px 10px 40px rgba(0, 0, 0, 0.5); 
   letter-spacing: 5px; 
   font-family: 'PP Neue Corp Wide', sans-serif; 
   pointer-events: none;
@@ -49,13 +49,13 @@ body {
 
 .parallax__header {
   height: 100vh;
-  position: relative;
+  border-radius: 15px;
   overflow: hidden;
+  box-shadow: 0 5px 25px 20px #111;
 }
 
 .parallax__content {
-  height: 00vh; /* biar bisa scroll */
-  background-color: #111;
+  height: 00vh;
 }
 
 @font-face {

@@ -1,9 +1,9 @@
 export const ContactForm = () => {
      return (
           <section id="contact" className="py-16 px-4 bg-gray-100 dark:bg-gray-800">
-               <div className="max-w-7xl mx-auto text-center">
+               <div className="max-w-7xl  mx-auto text-center">
                     <h2 className="text-3xl font-semibold">Contact Me</h2>
-                    <form className="mt-8 max-w-lg mx-auto">
+                    <form className="mt-8 max-w-lg mx-auto ">
                          <div className="flex flex-col gap-4">
                               <input
                                    type="text"

@@ -10,22 +10,31 @@ export const PortfolioGrid = () => {
                               <img src="/portfolio1.jpeg" alt="Project 1" className="w-full h-48 object-cover rounded-lg" />
                               <h3 className="mt-4 text-xl font-semibold">Project 1</h3>
                               <p className="mt-2">Description of project 1 goes here.</p>
+                              <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                   Preview Demo
+                              </button>
                          </div>
                          <div className="bg-white p-6 rounded-lg shadow-md">
                               <img src="/portfolio2.jpeg" alt="Project 2" className="w-full h-48 object-cover rounded-lg" />
                               <h3 className="mt-4 text-xl font-semibold">Project 2</h3>
                               <p className="mt-2">Description of project 2 goes here.</p>
+                              <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                   Preview Demo
+                              </button>
                          </div>
                          <div className="bg-white p-6 rounded-lg shadow-md">
                               <img src="/portfolio3.jpeg" alt="Project 3" className="w-full h-48 object-cover rounded-lg" />
                               <h3 className="mt-4 text-xl font-semibold">Project 3</h3>
                               <p className="mt-2">Description of project 3 goes here.</p>
+                              <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                   Preview Demo
+                              </button>
                          </div>
                     </div>
 
                     {/* Tumpukan Card Modern */}
                     <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                         {[4, 5, 6].map((index) => (
+                         {[1, 2, 3, 4, 5, 6].map((index) => (
                               <div
                                    key={index}
                                    className="group relative cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl"
@@ -42,6 +51,9 @@ export const PortfolioGrid = () => {
                                         <p className="mt-2 text-gray-600 dark:text-gray-300">
                                              Description of project {index} goes here.
                                         </p>
+                                        <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                             Preview Demo
+                                        </button>
                                    </div>
                               </div>
                          ))}

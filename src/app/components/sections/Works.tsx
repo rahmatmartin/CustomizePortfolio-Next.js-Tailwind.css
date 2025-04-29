@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Styles.css';
 
-export const Parallax = () => {
+export const Works = () => {
           useEffect(() => {
                gsap.registerPlugin(ScrollTrigger);
 
