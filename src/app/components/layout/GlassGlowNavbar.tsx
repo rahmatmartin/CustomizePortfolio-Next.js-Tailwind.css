@@ -25,14 +25,13 @@ export const GlassGlowNavbar = ({ theme, toggleTheme }: NavbarProps) => {
 
      return (
           <>
-               <nav className={`top-0 left-2 lg:left-0 z-20 px-6 py-4 
+               <nav className={`top-0 right-4 left-4 lg:left-30  z-50 px-6 py-3 
                     bg-white/20 dark:bg-gray-800/30 backdrop-blur-lg 
                     border-b border-white/10 dark:border-gray-700 
                     shadow-md transition-all duration-500 
                     ${hasScrolled ? 'backdrop-blur-md' : 'backdrop-blur-lg'}`}>
 
-
-                    <div className="max-w-6xl mx-auto flex items-center justify-between">
+                    <div className="max-w-4xl mx-auto flex items-center justify-between">
                          {/* Branding */}
                          <div className="text-xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                               StillMatt

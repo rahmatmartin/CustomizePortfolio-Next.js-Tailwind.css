@@ -119,7 +119,7 @@ export default function Home() {
 
         {/* Modern Dropdown Selector with Scroll Hide Effect */}
         <div className={`fixed top-0 right-0 -translate-x-1 z-10 px-2 py-1 
-        transition-all duration-500 ease-in-out ${!showDropdown ? 'opacity-0 pointer-events-none' : ''}`}>
+        transition-all duration-500 ease-in-out ${!showDropdown ? 'opacity-100 pointer-events-none' : ''}`}>
           <select
             value={navStyle}
             onChange={(e) => setNavStyle(e.target.value as 'glass' | 'bottom' | 'sidebar' | '')}
