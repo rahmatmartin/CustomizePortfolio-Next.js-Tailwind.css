@@ -25,7 +25,7 @@ export const GlassGlowNavbar = ({ theme, toggleTheme }: NavbarProps) => {
 
      return (
           <>
-               <nav className={`top-0 right-4 left-4 lg:left-30  z-50 px-6 py-3 
+               <nav className={`top-0 right-30 left-4 lg:left-30  z-50 px-6 py-4 
                     bg-white/20 dark:bg-gray-800/30 backdrop-blur-lg 
                     border-b border-white/10 dark:border-gray-700 
                     shadow-md transition-all duration-500 
@@ -38,19 +38,24 @@ export const GlassGlowNavbar = ({ theme, toggleTheme }: NavbarProps) => {
                          </div>
 
                          {/* Menu */}
-                         <div className="flex gap-6 items-center">
+                         <div className="flex gap-6 items-center ">
                               {[
                                    { href: '/', label: 'Home', icon: <Home size={18} /> },
                                    { href: '/#about', label: 'About', icon: <User size={18} /> },
                                    { href: '/#portfolio', label: 'Portfolio', icon: <Briefcase size={18} /> },
                                    { href: '/#contact', label: 'Contact', icon: <Mail size={18} /> },
                               ].map(({ href, label, icon }) => (
-                                   <Link key={href} href={href} className="group relative flex items-center gap-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary transition-all">
+                                   <Link
+                                        key={href}
+                                        href={href}
+                                        className="group relative flex items-center gap-1 text-sm font-medium text-light-700 dark:text-white hover:text-primary transition-all"
+                                   >
                                         {icon}
                                         <span>{label}</span>
                                         <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-indigo-500 to-pink-500 transition-all duration-300 group-hover:w-full" />
                                    </Link>
                               ))}
+
 
                               {/* Theme toggle */}
                               <button onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 shadow hover:scale-105 transition" aria-label="Toggle Theme">
@@ -63,7 +68,7 @@ export const GlassGlowNavbar = ({ theme, toggleTheme }: NavbarProps) => {
                {showScrollTop && (
                     <button
                          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                         className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 shadow-lg hover:scale-110 transition"
+                         className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-dark/80 dark:bg-dark -800/80 shadow-lg hover:scale-110 transition"
                     >
                          <ArrowUp className="w-5 h-5 text-gray-800 dark:text-white" />
                     </button>

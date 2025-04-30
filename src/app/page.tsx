@@ -8,12 +8,16 @@ import { Navbar } from './components/layout/Navbar'
 import { GlassGlowNavbar } from './components/layout/GlassGlowNavbar'
 import { BottomAppNav } from './components/layout/BottomAppNav'
 import { SidebarNav } from './components/layout/SidebarNav'
+import { NavSelector } from './components/layout/NavSelector'
 
 import { HeroSection } from './components/sections/Hero'
 import { AboutSection } from './components/sections/AboutSection'
 import { Works } from './components/sections/Works'
 import { PortfolioGrid } from './components/sections/PortfolioGrid'
 import { ContactForm } from './components/sections/ContactForm'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 export default function Home() {
   const [theme, setTheme] = useState<'dark' | 'light'>('light')
@@ -22,9 +26,13 @@ export default function Home() {
   const [showDropdown, setShowDropdown] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
 
+  // Init + restore theme & navStyle
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light'
+    const savedNav = localStorage.getItem('navStyle') as 'glass' | 'bottom' | 'sidebar' | ''
+
     if (savedTheme) setTheme(savedTheme)
+    if (savedNav) setNavStyle(savedNav)
 
     AOS.init({
       duration: 800,
@@ -32,25 +40,23 @@ export default function Home() {
       once: true,
     })
 
-    // Event listener untuk mendeteksi scroll
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        // Jika scroll ke bawah
         setShowDropdown(false)
       } else {
-        // Jika scroll ke atas
         setShowDropdown(true)
       }
       setLastScrollY(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll)
-
-    // Clean up event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
+
+  // Persist navStyle ke localStorage
+  useEffect(() => {
+    localStorage.setItem('navStyle', navStyle)
+  }, [navStyle])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
@@ -73,18 +79,12 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
-
       <header>
-        {/* Show Default Navbar if no custom nav is selected */}
         {navStyle === '' && <Navbar theme={theme} toggleTheme={toggleTheme} />}
         {navStyle !== '' && renderCustomNavbar()}
       </header>
 
-      <main
-        className={`transition-all duration-300 pt-0 
-        ${navStyle === 'sidebar' ? 'ml-20 hover:ml-64' : ''}`}
-      >
-
+      <main className={`transition-all duration-300 pt-0 ${navStyle === 'sidebar' ? 'ml-20 hover:ml-64' : ''}`}>
         <section data-aos="fade-up">
           <HeroSection />
         </section>
@@ -117,27 +117,55 @@ export default function Home() {
           <ContactForm />
         </section>
 
-        {/* Modern Dropdown Selector with Scroll Hide Effect */}
-        <div className={`fixed top-0 right-0 -translate-x-1 z-10 px-2 py-1 
-        transition-all duration-500 ease-in-out ${!showDropdown ? 'opacity-100 pointer-events-none' : ''}`}>
-          <select
-            value={navStyle}
-            onChange={(e) => setNavStyle(e.target.value as 'glass' | 'bottom' | 'sidebar' | '')}
-            className="bg-transparent dark:bg-transparent border border-gray-300 dark:border-gray-700 text-sm rounded-md px-3 py-2 focus:ring-0 focus:border-primary focus:outline-none transition-all duration-200 text-gray-800 dark:text-gray-200"
-          >
-            <option value="">Default Nav</option>
-            <option value="glass">GlassGlow Nav</option>
-            <option value="bottom">Bottom Nav</option>
-            <option value="sidebar">Sidebar Nav</option>
-          </select>
-        </div>
-
-
+        {/* Stylish Nav Selector */}
+        <NavSelector
+          navStyle={navStyle}
+          setNavStyle={setNavStyle}
+          showDropdown={showDropdown}
+        />
       </main>
 
-      <footer className="p-4 mt-10 bg-gray-200 dark:bg-gray-800">
-        <p className="text-center">© 2025 My Portfolio</p>
+      <footer className="relative mt-20 px-6 py-10 bg-white/30 dark:bg-gray-900/30 backdrop-blur-md shadow-inner rounded-t-3xl">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-center items-center md:items-start gap-10 text-center text-sm text-gray-700 dark:text-gray-300">
+
+          <div className="md:w-1/3">
+            <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">My Portfolio</h3>
+            <p className="text-gray-600 dark:text-gray-400">Showcasing creativity, code, and passion.</p>
+          </div>
+
+          <div className="md:w-1/3">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Quick Links</h4>
+            <ul className="flex justify-center gap-4">
+              <li><a href="#about" className="hover:underline">About</a></li>
+              <li><a href="#works" className="hover:underline">Works</a></li>
+              <li><a href="#contact" className="hover:underline">Contact</a></li>
+            </ul>
+          </div>
+
+          <div className="md:w-1/3">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Connect</h4>
+            <div className="flex justify-center gap-4">
+              <a href="https://twitter.com" target="_blank" rel="noopener" className="hover:text-blue-500 transition">
+                <FontAwesomeIcon icon={faTwitter} size="lg" />
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener" className="hover:text-gray-800 dark:hover:text-white transition">
+                <FontAwesomeIcon icon={faGithub} size="lg" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" className="hover:text-blue-700 transition">
+                <FontAwesomeIcon icon={faLinkedin} size="lg" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="mt-8 border-t border-gray-300/40 dark:border-gray-600/30 pt-4 text-center text-xs text-gray-500 dark:text-gray-400">
+          © 2025 My Portfolio. Built with passion & React.
+        </div>
       </footer>
+
+
+
     </div>
   )
 }

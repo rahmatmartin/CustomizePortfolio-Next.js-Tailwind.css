@@ -22,8 +22,9 @@ export const BottomAppNav = ({ theme, toggleTheme }: NavbarProps) => {
                          <span>{label}</span>
                     </Link>
                ))}
-               <button onClick={toggleTheme} className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 shadow hover:scale-105 transition" aria-label="Toggle Theme">
-                    {theme === 'light' ? <Sun size={20} /> : <Moon size={20} />}
+               {/* Theme toggle */}
+               <button onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 shadow hover:scale-105 transition" aria-label="Toggle Theme">
+                    {theme === 'light' ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-blue-400" />}
                </button>
           </nav>
      )
